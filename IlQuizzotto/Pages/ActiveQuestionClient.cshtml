@@ -6,6 +6,10 @@
 <h1>Quizzotto</h1>
 <div class="container">
     <input type="text" id="querrentQuestion" />
+    <br />
+    <input type="text" id="answer1" />
+    <input type="text" id="answer2" />
+    <input type="text" id="answer3" />
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="~/js/signalr.js"></script>
@@ -17,12 +21,21 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/quizzottoHub").bui
 //Disable the send button until connection is established.
 
 
-connection.on("ReceiveMessage", function (question) {
+connection.on("CurrentQuestion", function (question) {
    $("#querrentQuestion").val(question);
+});
+connection.on("Answer1", function (question) {
+   $("#answer1").val(question);
+});
+connection.on("Answer2", function (question) {
+   $("#answer2").val(question);
+});
+connection.on("Answer3", function (question) {
+   $("#answer3").val(question);
 });
 
 connection.start().then(function () {
-  debugger;
+ 
 }).catch(function (err) {
     return console.error(err.toString());
 });

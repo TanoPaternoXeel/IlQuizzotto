@@ -33,10 +33,16 @@ namespace IlQuizzotto.Pages
             currentQuestion = "Domanda " + currentQuestioNumber;
             HttpContext.Session.SetInt32("currentQuestion", currentQuestioNumber ?? 0);
 
-            await _hub.Clients.All.SendAsync("ReceiveMessage", currentQuestion);
+            await _hub.Clients.All.SendAsync("CurrentQuestion", currentQuestion);
+            await _hub.Clients.All.SendAsync("Answer1", "Risposta1 " + currentQuestioNumber);
+            await _hub.Clients.All.SendAsync("Answer2", "Risposta2 " + currentQuestioNumber);
+            await _hub.Clients.All.SendAsync("Answer3", "Risposta3 " + currentQuestioNumber);
 
         }
+        public void CollectAnswer(string userName, int answer)
+        {
 
+        }
 
 
     }
