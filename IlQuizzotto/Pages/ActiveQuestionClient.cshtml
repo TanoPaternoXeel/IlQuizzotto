@@ -42,9 +42,9 @@
                 <form method="post">
 
                 <h2 class="mb-3" id="querrentQuestion"></h2>
-                <div class="option" id="answer1"></div>
-                <div class="option" id="answer2"></div>
-                <div class="option" id="answer3"></div>
+                    <div class="option" id="answer1" onclick="selectOption('answer1')"></div>
+                    <div class="option" id="answer2" onclick="selectOption('answer2')"></div>
+                    <div class="option" id="answer3" onclick="selectOption('answer3')"></div>
                 <input type="hidden"  id="answer1Guid" />
                 <input type="hidden"  id="answer2Guid" />
                 <input type="hidden"  id="answer3Guid" />
@@ -69,6 +69,7 @@
 <script>
     "use strict";
 
+    var answer = "";
 var connection = new signalR.HubConnectionBuilder().withUrl("/quizzottoHub").build();
 
 
@@ -77,6 +78,9 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/quizzottoHub").bui
 connection.on("CurrentQuestion", function (question) {
     $("#question").addClass("d-block").removeClass("d-none");
     $("#loading").addClass("d-none").removeClass("d-block");
+    answer = "";
+
+        $('.option').removeClass('selected');
    $("#querrentQuestion").html(question);
 });
 connection.on("Answer1", function (question) {
@@ -103,6 +107,13 @@ connection.start().then(function () {
 }).catch(function (err) {
     return console.error(err.toString());
 });
+
+    function selectOption(optionId) {
+        $('.option').removeClass('selected');
+        $('#' + optionId).addClass('selected');
+        answer = $('#' + optionId + "Guid").val();
+        console.log(answer)
+    }
 $(document).ready(function(){
     debugger;
    var token = $('input:hidden[name="__RequestVerificationToken"]').val();
@@ -111,7 +122,7 @@ $(document).ready(function(){
          $.ajax({
             type: "POST",
             url:  "",
-            data: { userName: "hello", answerId : 1} ,
+            data: { userName: localStorage.getItem("quizzotto-user"), answerId : answer} ,
             headers: {
                     RequestVerificationToken: token
                 },
