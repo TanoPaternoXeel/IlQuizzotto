@@ -1,4 +1,10 @@
 ﻿@page
 @model IlQuizzotto.Pages.ActiveQuestionModel
 @{
+      ViewData["Title"] = "Quizzotto ";
 }
+<h1>Quizzotto</h1>
+<label>@Model.currentQuestion</label>
+<form method="post">
+    <input type="submit"  value="Prossima domanda" />
+</form>

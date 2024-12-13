@@ -2,11 +2,14 @@
 
 namespace IlQuizzotto.Hubs
 {
-    public class ChatHub : Hub
+    public class QuizzottoHub : Hub
     {
-        public async Task SendMessage(string user, string message)
+        public async Task SendMessage(string text)
         {
-            await Clients.All.SendAsync("ReceiveMessage", user, message);
+            if (Clients != null)
+            {
+                await Clients.All.SendAsync("ReceiveMessage", text);
+            }
         }
     }
 }
