@@ -1,49 +1,63 @@
 is_global = true
 build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = IlQuizzotto
 build_property.RootNamespace = IlQuizzotto
-build_property.ProjectDir = D:\Dev\Xeel\IlQuizzotto\IlQuizzotto\
+build_property.ProjectDir = C:\Projects\IlQuizzotto\IlQuizzotto\IlQuizzotto\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Dev\Xeel\IlQuizzotto\IlQuizzotto
+build_property.MSBuildProjectDirectory = C:\Projects\IlQuizzotto\IlQuizzotto\IlQuizzotto
 build_property._RazorSourceGeneratorDebug = 
-build_property.EffectiveAnalysisLevelStyle = 8.0
-build_property.EnableCodeStyleSeverity = 
 
-[D:/Dev/Xeel/IlQuizzotto/IlQuizzotto/Pages/Error.cshtml]
+[C:/Projects/IlQuizzotto/IlQuizzotto/IlQuizzotto/Pages/ActiveQuestion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWN0aXZlUXVlc3Rpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/IlQuizzotto/IlQuizzotto/IlQuizzotto/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Dev/Xeel/IlQuizzotto/IlQuizzotto/Pages/Index.cshtml]
+[C:/Projects/IlQuizzotto/IlQuizzotto/IlQuizzotto/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Dev/Xeel/IlQuizzotto/IlQuizzotto/Pages/Privacy.cshtml]
+[C:/Projects/IlQuizzotto/IlQuizzotto/IlQuizzotto/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Dev/Xeel/IlQuizzotto/IlQuizzotto/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Projects/IlQuizzotto/IlQuizzotto/IlQuizzotto/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Dev/Xeel/IlQuizzotto/IlQuizzotto/Pages/_ViewImports.cshtml]
+[C:/Projects/IlQuizzotto/IlQuizzotto/IlQuizzotto/Pages/UserLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlckxvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/IlQuizzotto/IlQuizzotto/IlQuizzotto/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Dev/Xeel/IlQuizzotto/IlQuizzotto/Pages/_ViewStart.cshtml]
+[C:/Projects/IlQuizzotto/IlQuizzotto/IlQuizzotto/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Dev/Xeel/IlQuizzotto/IlQuizzotto/Pages/Shared/_Layout.cshtml]
+[C:/Projects/IlQuizzotto/IlQuizzotto/IlQuizzotto/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-b369fpx6wz

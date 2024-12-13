@@ -19,4 +19,19 @@ html {
 
 body {
   margin-bottom: 60px;
+  height: calc(100vh - 60px);
+  width: 100%;
+
+}
+
+.bg-blue {
+    background: #2986B6;
+}
+
+.bg-blue-sfumato {
+    background: linear-gradient(to bottom, #116698 0%, #2986B6 50%, #116698 100%);
+}
+
+header > nav {
+    height: 70px;
 }
