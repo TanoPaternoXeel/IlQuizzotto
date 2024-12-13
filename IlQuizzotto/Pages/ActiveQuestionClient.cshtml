@@ -45,7 +45,9 @@
                 <div class="option" id="answer1"></div>
                 <div class="option" id="answer2"></div>
                 <div class="option" id="answer3"></div>
-
+                <input type="hidden"  id="answer1Guid" />
+                <input type="hidden"  id="answer2Guid" />
+                <input type="hidden"  id="answer3Guid" />
                 <div>
 
                     <button id="SendAnswer" type="button" class="btn btn-primary btn-lg mt-4 w-auto">Invia</button>
@@ -85,6 +87,15 @@ connection.on("Answer2", function (question) {
 });
 connection.on("Answer3", function (question) {
         $("#answer3").html(question);
+});
+connection.on("Answer1Guid", function (question) {
+        $("#answer1Guid").val(question);
+});
+connection.on("Answer2Guid", function (question) {
+        $("#answer2Guid").val(question);
+});
+connection.on("Answer3Guid", function (question) {
+        $("#answer3Guid").val(question);
 });
 
 connection.start().then(function () {
