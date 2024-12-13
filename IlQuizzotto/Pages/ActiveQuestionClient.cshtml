@@ -10,6 +10,8 @@
     <input type="text" id="answer1" />
     <input type="text" id="answer2" />
     <input type="text" id="answer3" />
+
+    <button id="SendAnswer" </button> 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="~/js/signalr.js"></script>
@@ -39,6 +41,11 @@ connection.start().then(function () {
 }).catch(function (err) {
     return console.error(err.toString());
 });
+$(document).ready(function(){
+    $("#SendAnswer").click(function(){
+        @Url.Action("ActiveQuestion", "")
+    });
+})
 
 
 </script>
