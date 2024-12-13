@@ -4,7 +4,38 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="h-100 w-100 d-flex flex-column align-items-center justify-content-center bg-blue-sfumato pb-4">
+    <img src="~/images/quiz8logo.png" alt="Example Image" class="img-fluid" style="height: 50%"/>
+    <div>
+        <a asp-page="new" class="btn btn-light btn-lg fs-2">
+            <i class="fa-solid fa-play fa-beat me-2"></i> START
+        </a>
+    </div>
+    <div class="container mt-3">
+        <div class="row align-items-center justify-content-between w-100 mx-5">
+            <h2 class="col-8 text-center">Scansionare il QR Code per partecipare</h2>
+            <div class="col-4 row">
+                <div class="col-auto">
+                    <div class="bg-white p-1 w-auto">
+                        <div id="qrcode"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: "https://localhost:7243/UserLogin",
+                width: 150,
+            height: 150,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+    </script>
+
+}
