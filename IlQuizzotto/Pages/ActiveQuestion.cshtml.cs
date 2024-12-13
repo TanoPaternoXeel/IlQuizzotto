@@ -47,7 +47,7 @@ namespace IlQuizzotto.Pages
         {
             var currentQuestioNumber = HttpContext.Session.GetInt32("currentQuestion");
             currentQuestioNumber++;
-            currentQuestion = "Domanda " + currentQuestioNumber;
+            
             HttpContext.Session.SetInt32("currentQuestion", currentQuestioNumber ?? 0);
 
             var q = _context.Set<Question>().Skip(currentQuestioNumber.Value).FirstOrDefault();
@@ -55,19 +55,16 @@ namespace IlQuizzotto.Pages
             currentQuestion = q.Description;
             await _hub.Clients.All.SendAsync("CurrentQuestion", currentQuestion);
             await _hub.Clients.All.SendAsync("Answer1", answers[0].Description);
+            answer1 = answers[0].Description;
             await _hub.Clients.All.SendAsync("Answer1Guid", answers[0].Id);
             await _hub.Clients.All.SendAsync("Answer2", answers[1].Description);
+            answer2 = answers[1].Description;
             await _hub.Clients.All.SendAsync("Answer2Guid", answers[1].Id);
             await _hub.Clients.All.SendAsync("Answer3", answers[2].Description);
+            answer3= answers[2].Description;
             await _hub.Clients.All.SendAsync("Answer3Guid", answers[2].Id);
 
         }
        
-        public void OnPostAsync(string userName, int answerId)
-        {
-
-        }
-
-
     }
 }

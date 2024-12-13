@@ -22,6 +22,9 @@ namespace IlQuizzotto.Pages
             Session s = new Session();
             s.AnswerId = answerId;
             s.PlayerNickName = userName;
+            s.CreatedDate = DateTime.Now;
+            _context.Add(s);
+            _context.SaveChanges();
         }
     }
 }
