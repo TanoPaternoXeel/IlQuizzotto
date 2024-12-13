@@ -26,6 +26,8 @@
                     <button class="btn btn-primary w-100" type="button" id="loginBtn">Gioca</button>
                 </div>
             </form>
+            <a asp-page="ActiveQuestionClient" class="d-none" id="myLink">
+            </a>
         </div>
     </div>
 </div>
@@ -37,6 +39,7 @@
             $("#loginBtn").on("click", function () {
                 if ($("#loginForm").valid()) {
                     localStorage.setItem("quizzotto-user", $("#nickname").val());
+                    document.getElementById('myLink').click();
                 }
             });
         });

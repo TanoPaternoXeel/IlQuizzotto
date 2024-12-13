@@ -33,11 +33,14 @@ namespace IlQuizzotto.Pages
             var answers = _context.Set<Answer>().Where(c=>c.QuestionId == q.Id).ToArray();
             currentQuestion = q.Description;
             await _hub.Clients.All.SendAsync("CurrentQuestion", currentQuestion);
-            await _hub.Clients.All.SendAsync("Answer1", "Risposta1 " + answers[0].Description);
+            await _hub.Clients.All.SendAsync("Answer1", answers[0].Description);
+            await _hub.Clients.All.SendAsync("Answer1Guid", answers[0].Description);
             answer1 = answers[0].Description;
-            await _hub.Clients.All.SendAsync("Answer2", "Risposta2 " + answers[1].Description);
+            await _hub.Clients.All.SendAsync("Answer2", answers[1].Description);
+            await _hub.Clients.All.SendAsync("Answer2Guid", answers[0].Description);
             answer2 = answers[1].Description;
-            await _hub.Clients.All.SendAsync("Answer3", "Risposta3 " + answers[2].Description);
+            await _hub.Clients.All.SendAsync("Answer3", answers[2].Description);
+            await _hub.Clients.All.SendAsync("Answer3Guid", answers[2].Description);
             answer3 = answers[2].Description;
         }
         public async Task OnPostAsync()
@@ -51,12 +54,16 @@ namespace IlQuizzotto.Pages
             var answers = _context.Set<Answer>().Where(c => c.QuestionId == q.Id).ToArray();
             currentQuestion = q.Description;
             await _hub.Clients.All.SendAsync("CurrentQuestion", currentQuestion);
-            await _hub.Clients.All.SendAsync("Answer1", "Risposta1 " + answers[0].Description);
-            await _hub.Clients.All.SendAsync("Answer2", "Risposta2 " + answers[1].Description);
-            await _hub.Clients.All.SendAsync("Answer3", "Risposta3 " + answers[2].Description);
+            await _hub.Clients.All.SendAsync("Answer1", answers[0].Description);
+            await _hub.Clients.All.SendAsync("Answer1Guid", answers[0].Id);
+            await _hub.Clients.All.SendAsync("Answer2", answers[1].Description);
+            await _hub.Clients.All.SendAsync("Answer2Guid", answers[1].Id);
+            await _hub.Clients.All.SendAsync("Answer3", answers[2].Description);
+            await _hub.Clients.All.SendAsync("Answer3Guid", answers[2].Id);
 
         }
-        public void CollectAnswer(string userName, int answer)
+       
+        public void OnPostAsync(string userName, int answerId)
         {
 
         }
