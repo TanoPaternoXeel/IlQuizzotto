@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dev\\Xeel\\IlQuizzotto\\IlQuizzotto\\IlQuizzotto.csproj": {}
+    "F:\\ilQuizzotto\\IlQuizzotto\\IlQuizzotto.csproj": {}
   },
   "projects": {
-    "D:\\Dev\\Xeel\\IlQuizzotto\\IlQuizzotto\\IlQuizzotto.csproj": {
+    "F:\\ilQuizzotto\\IlQuizzotto\\IlQuizzotto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Xeel\\IlQuizzotto\\IlQuizzotto\\IlQuizzotto.csproj",
+        "projectUniqueName": "F:\\ilQuizzotto\\IlQuizzotto\\IlQuizzotto.csproj",
         "projectName": "IlQuizzotto",
-        "projectPath": "D:\\Dev\\Xeel\\IlQuizzotto\\IlQuizzotto\\IlQuizzotto.csproj",
-        "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Xeel\\IlQuizzotto\\IlQuizzotto\\obj\\",
+        "projectPath": "F:\\ilQuizzotto\\IlQuizzotto\\IlQuizzotto.csproj",
+        "packagesPath": "C:\\Users\\maicol\\.nuget\\packages\\",
+        "outputPath": "F:\\ilQuizzotto\\IlQuizzotto\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\maicol\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,9 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/XeelTechSrl/_packaging/NuXeel/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -44,13 +42,29 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
+          "auditMode": "all"
         },
         "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -70,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
