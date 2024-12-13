@@ -3,12 +3,80 @@
 @{
       ViewData["Title"] = "Quizzotto ";
 }
-<h1>Quizzotto</h1>
-<label>@Model.currentQuestion</label>
 
-<label>@Model.answer1</label>
-<label>@Model.answer2</label>
-<label>@Model.answer3</label>
-<form method="post">
-    <input type="submit"  value="Prossima domanda" />
-</form>
+<style>
+        .quiz-card {
+            border: none;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .option {
+            background-color: #116698BF;
+            border: 2px solid #444;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #fff;
+        }
+</style>
+
+
+<div class="h-100 w-100 d-flex flex-column align-items-center justify-content-center bg-blue-sfumato pb-4">
+    <img src="~/images/quiz8logo.png" alt="Example Image" class="img-fluid" style="height: 150px" />
+    <div class="container mt-3 text-center">
+        <div class="card quiz-card">
+            <div class="card-body">
+                <h2 class="mb-3">@Model.currentQuestion</h2>
+                <div class="option" id="option1">@Model.answer1</div>
+                <div class="option" id="option2">@Model.answer2</div>
+                <div class="option" id="option3">@Model.answer3</div>
+            </div>
+        </div>
+    </div>
+
+    <form method="post" class="d-none" id="form">
+        <input type="submit" value="Prossima domanda" />
+    </form>
+
+    <div class="position-absolute card" style="bottom: 60px; right: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0;">
+        <div class="card-body fs-1 d-flex align-items-center">
+            <div class="ms-3"></div>
+            <i class="fa-solid fa-hourglass fa-spin-pulse" style="height: 34px"></i>
+            <div class="ms-4 timer" id="timer">01:00</div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+
+        // Timer function
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = 0;
+                    $("#form").submit()
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var timeInSeconds = 60; // Set the time limit in seconds
+            var display = document.querySelector('#timer');
+            startTimer(timeInSeconds, display);
+        };
+    </script>
+}

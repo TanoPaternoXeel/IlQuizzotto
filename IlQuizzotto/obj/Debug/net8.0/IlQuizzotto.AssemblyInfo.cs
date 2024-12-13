@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IlQuizzotto")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b42af4b2f95e8b58be9d28707ed0e3e181ae9f3f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+656b9d3397bd8183dc7a5d0e3c3b88c5e4bdbd8b")]
 [assembly: System.Reflection.AssemblyProductAttribute("IlQuizzotto")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IlQuizzotto")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

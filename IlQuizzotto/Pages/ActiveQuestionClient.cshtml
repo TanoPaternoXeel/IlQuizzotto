@@ -3,18 +3,65 @@
 @{
       ViewData["Title"] = "Quizzotto ";
 }
-<h1>Quizzotto</h1>
-<div class="container">
-    <input type="text" id="querrentQuestion" />
-    <br />
-    <input type="text" id="answer1" />
-    <input type="text" id="answer2" />
-    <input type="text" id="answer3" />
 
-    <form method="post">
-    <button id="sendAnswer">Invia Rispota </button> 
-    </form>
+<style>
+    .quiz-card {
+        border: none;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .option {
+        background-color: #116698BF;
+        border: 2px solid #444;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+        color: #fff;
+    }
+
+        .option:hover {
+            background-color: #1482b3;
+        }
+
+    .selected {
+        background-color: #116698;
+        color: #fff;
+    }
+</style>
+
+
+<div class="h-100 w-100 d-flex flex-column align-items-center justify-content-center bg-blue-sfumato pb-4">
+    <img src="~/images/quiz8logo.png" alt="Example Image" class="img-fluid" style="height: 150px" />
+    <div class="container mt-3 text-center">
+        <div class="card quiz-card">
+            <div class="card-body d-none" id="question">
+                <form method="post">
+
+                <h2 class="mb-3" id="querrentQuestion"></h2>
+                <div class="option" id="answer1"></div>
+                <div class="option" id="answer2"></div>
+                <div class="option" id="answer3"></div>
+
+                <div>
+
+                    <button id="SendAnswer" type="button" class="btn btn-primary btn-lg mt-4 w-auto">Invia</button>
+                </div>
+
+                </form>
+            </div>
+
+            <div id="loading" class="d-block" style="font-size: 12rem; color: #116698BF">
+                <i class="fa-solid fa-hourglass fa-spin-pulse"></i>
+            </div>
+        </div>
+    </div>
+
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="~/js/signalr.js"></script>
 <script>
@@ -26,16 +73,18 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/quizzottoHub").bui
 
 
 connection.on("CurrentQuestion", function (question) {
-   $("#querrentQuestion").val(question);
+    $("#question").addClass("d-block").removeClass("d-none");
+    $("#loading").addClass("d-none").removeClass("d-block");
+   $("#querrentQuestion").html(question);
 });
 connection.on("Answer1", function (question) {
-   $("#answer1").val(question);
+        $("#answer1").html(question);
 });
 connection.on("Answer2", function (question) {
-   $("#answer2").val(question);
+        $("#answer2").html(question);
 });
 connection.on("Answer3", function (question) {
-   $("#answer3").val(question);
+        $("#answer3").html(question);
 });
 
 connection.start().then(function () {
@@ -66,3 +115,4 @@ $(document).ready(function(){
 
 
 </script>
+
