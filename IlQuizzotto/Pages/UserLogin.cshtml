@@ -3,3 +3,42 @@
 @{
 }
 
+<div class="h-100 w-100 d-flex flex-column align-items-center justify-content-center bg-blue-sfumato pb-4">
+    <div class="pt-4 pb-2">
+        <div class="container text-center">
+            <img src="~/images/quiz8logo.png" alt="Example Image" class="img-fluid" style="height: 75px" />
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-body p-5">
+            <h3 class="text-center mb-2">
+                Benvenuto
+            </h3>
+            <h5 class="text-center mb-5">
+                Inserisci un nome e partecipa al quiz
+            </h5>
+            <form class="row g-3" method="post" id="loginForm">
+                <div class="col-12 pb-2">
+                    <input asp-for="Nickname" type="text" class="form-control" id="nickname" name="@nameof(Model.Nickname)" placeholder="Nickname" required>
+                    <span asp-validation-for="Nickname" class="text-danger"></span>
+                </div>
+                <div class="col-12 pb-2">
+                    <button class="btn btn-primary w-100" type="button" id="loginBtn">Gioca</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(function () {
+            $("#loginBtn").on("click", function () {
+                if ($("#loginForm").valid()) {
+                    localStorage.setItem("quizzotto-user", $("#nickname").val());
+                }
+            });
+        });
+    </script>
+}
