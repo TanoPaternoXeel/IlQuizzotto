@@ -56,7 +56,8 @@ namespace IlQuizzotto.Pages
             await _hub.Clients.All.SendAsync("Answer3", "Risposta3 " + answers[2].Description);
 
         }
-        public void CollectAnswer(string userName, int answer)
+       
+        public void OnPostAsync(string userName, int answerId)
         {
 
         }

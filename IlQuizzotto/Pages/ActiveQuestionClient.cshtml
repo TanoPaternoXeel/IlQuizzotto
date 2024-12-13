@@ -11,7 +11,9 @@
     <input type="text" id="answer2" />
     <input type="text" id="answer3" />
 
-    <button id="SendAnswer" </button> 
+    <form method="post">
+    <button id="sendAnswer">Invia Rispota </button> 
+    </form>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="~/js/signalr.js"></script>
@@ -20,7 +22,7 @@
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/quizzottoHub").build();
 
-//Disable the send button until connection is established.
+
 
 
 connection.on("CurrentQuestion", function (question) {
@@ -42,8 +44,23 @@ connection.start().then(function () {
     return console.error(err.toString());
 });
 $(document).ready(function(){
-    $("#SendAnswer").click(function(){
-        @Url.Action("ActiveQuestion", "")
+    debugger;
+   var token = $('input:hidden[name="__RequestVerificationToken"]').val();
+    $("#sendAnswer").click(function(){
+        debugger;
+         $.ajax({
+            type: "POST",
+            url:  "",
+            data: { userName: "hello", answerId : 1} ,
+            headers: {
+                    RequestVerificationToken: token
+                },
+            success: function () {
+                alert('Posted using jQuery')
+            }
+        }
+        )
+       
     });
 })
 
