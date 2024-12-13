@@ -1,9 +1,12 @@
+using IlQuizzotto.Hubs;
+
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSignalR();
 
 //db context
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -29,5 +32,5 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
-
+app.MapHub<ChatHub>("/quizzottoHub");
 app.Run();
