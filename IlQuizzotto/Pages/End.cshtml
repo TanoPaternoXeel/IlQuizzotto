@@ -1,0 +1,21 @@
+﻿@page
+@model IlQuizzotto.Pages.EndModel
+@{
+}
+
+<div class="h-100 w-100 d-flex flex-column align-items-center justify-content-center bg-blue-sfumato pb-4">
+    <img src="~/images/quiz8logo.png" alt="Example Image" class="img-fluid" style="height: 150px" />
+    <div class="container mt-3 text-center">
+        <div class="card quiz-card">
+            <div class="card-body">
+                <h2 class="mb-3">VINCITORE</h2>
+                <h1>@Model.winner</h1>
+            </div>
+        </div>
+    </div>
+      <div>
+        <a asp-page="Index" class="btn btn-light mt-3 fs-2">
+            Home
+        </a>
+    </div>
+</div>

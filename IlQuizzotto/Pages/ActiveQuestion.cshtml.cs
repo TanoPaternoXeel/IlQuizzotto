@@ -24,30 +24,33 @@ namespace IlQuizzotto.Pages
         }
         public async void OnGet()
         {
-            
+
             if (HttpContext.Session.GetInt32("currentQuestion") == null)
             {
                 HttpContext.Session.SetInt32("currentQuestion", 0);
             }
             var q = _context.Set<Question>().FirstOrDefault();
-            var answers = _context.Set<Answer>().Where(c=>c.QuestionId == q.Id).ToArray();
+            var answers = _context.Set<Answer>().Where(c => c.QuestionId == q.Id).ToArray();
             currentQuestion = q.Description;
             await _hub.Clients.All.SendAsync("CurrentQuestion", currentQuestion);
             await _hub.Clients.All.SendAsync("Answer1", answers[0].Description);
-            await _hub.Clients.All.SendAsync("Answer1Guid", answers[0].Description);
+            await _hub.Clients.All.SendAsync("Answer1Guid", answers[0].Id);
             answer1 = answers[0].Description;
             await _hub.Clients.All.SendAsync("Answer2", answers[1].Description);
-            await _hub.Clients.All.SendAsync("Answer2Guid", answers[0].Description);
+            await _hub.Clients.All.SendAsync("Answer2Guid", answers[1].Id);
             answer2 = answers[1].Description;
             await _hub.Clients.All.SendAsync("Answer3", answers[2].Description);
-            await _hub.Clients.All.SendAsync("Answer3Guid", answers[2].Description);
+            await _hub.Clients.All.SendAsync("Answer3Guid", answers[2].Id);
             answer3 = answers[2].Description;
         }
         public async Task OnPostAsync()
         {
             var currentQuestioNumber = HttpContext.Session.GetInt32("currentQuestion");
-            currentQuestioNumber++;
-            
+            if (currentQuestioNumber == null)
+                currentQuestioNumber = 0;
+            else
+                currentQuestioNumber++;
+
             HttpContext.Session.SetInt32("currentQuestion", currentQuestioNumber ?? 0);
 
             var q = _context.Set<Question>().Skip(currentQuestioNumber.Value).FirstOrDefault();
@@ -61,10 +64,10 @@ namespace IlQuizzotto.Pages
             answer2 = answers[1].Description;
             await _hub.Clients.All.SendAsync("Answer2Guid", answers[1].Id);
             await _hub.Clients.All.SendAsync("Answer3", answers[2].Description);
-            answer3= answers[2].Description;
+            answer3 = answers[2].Description;
             await _hub.Clients.All.SendAsync("Answer3Guid", answers[2].Id);
 
         }
-       
+
     }
 }
