@@ -1,7 +1,7 @@
 ﻿@page
 @model IlQuizzotto.Pages.ActiveQuestionClinetModel
 @{
-      ViewData["Title"] = "Quizzotto ";
+    ViewData["Title"] = "Quizzotto";
 }
 
 <style>
@@ -33,7 +33,6 @@
     }
 </style>
 
-
 <div class="h-100 w-100 d-flex flex-column align-items-center justify-content-center bg-blue-sfumato pb-4">
     <img src="~/images/quiz8logo.png" alt="Example Image" class="img-fluid" style="height: 150px" />
     <div class="container mt-3 text-center">
@@ -41,17 +40,17 @@
             <div class="card-body d-none" id="question">
                 <form method="post">
 
-                <h2 class="mb-3" id="querrentQuestion"></h2>
+                    <h2 class="mb-3" id="querrentQuestion"></h2>
                     <div class="option" id="answer1" onclick="selectOption('answer1')"></div>
                     <div class="option" id="answer2" onclick="selectOption('answer2')"></div>
                     <div class="option" id="answer3" onclick="selectOption('answer3')"></div>
-                <input type="hidden"  id="answer1Guid" />
-                <input type="hidden"  id="answer2Guid" />
-                <input type="hidden"  id="answer3Guid" />
-                <div>
+                    <input type="hidden" id="answer1Guid" />
+                    <input type="hidden" id="answer2Guid" />
+                    <input type="hidden" id="answer3Guid" />
+                    <div>
 
-                    <button id="SendAnswer" type="button" class="btn btn-primary btn-lg mt-4 w-auto">Invia</button>
-                </div>
+                        <button id="SendAnswer" type="button" class="btn btn-primary btn-lg mt-4 w-auto">Invia</button>
+                    </div>
 
                 </form>
             </div>
@@ -70,71 +69,70 @@
     "use strict";
 
     var answer = "";
-var connection = new signalR.HubConnectionBuilder().withUrl("/quizzottoHub").build();
+    var connection = new signalR.HubConnectionBuilder().withUrl("/quizzottoHub").build();
 
-
-
-
-connection.on("CurrentQuestion", function (question) {
-    $("#question").addClass("d-block").removeClass("d-none");
-    $("#loading").addClass("d-none").removeClass("d-block");
-    answer = "";
+    connection.on("CurrentQuestion", function (question) {
+        $("#question").addClass("d-block").removeClass("d-none");
+        $("#loading").addClass("d-none").removeClass("d-block");
+        
+        answer = "";
 
         $('.option').removeClass('selected');
-   $("#querrentQuestion").html(question);
-});
-connection.on("Answer1", function (question) {
-        $("#answer1").html(question);
-});
-connection.on("Answer2", function (question) {
-        $("#answer2").html(question);
-});
-connection.on("Answer3", function (question) {
-        $("#answer3").html(question);
-});
-connection.on("Answer1Guid", function (question) {
-        $("#answer1Guid").val(question);
-});
-connection.on("Answer2Guid", function (question) {
-        $("#answer2Guid").val(question);
-});
-connection.on("Answer3Guid", function (question) {
-        $("#answer3Guid").val(question);
-});
+        $("#querrentQuestion").html(question);
+    });
 
-connection.start().then(function () {
- 
-}).catch(function (err) {
-    return console.error(err.toString());
-});
+    connection.on("Answer1", function (question) {
+            $("#answer1").html(question);
+    });
 
-    function selectOption(optionId) {
-        $('.option').removeClass('selected');
-        $('#' + optionId).addClass('selected');
-        answer = $('#' + optionId + "Guid").val();
-        console.log(answer)
-    }
-$(document).ready(function(){
-    debugger;
-   var token = $('input:hidden[name="__RequestVerificationToken"]').val();
-    $("#SendAnswer").click(function(){
+    connection.on("Answer2", function (question) {
+            $("#answer2").html(question);
+    });
+
+    connection.on("Answer3", function (question) {
+            $("#answer3").html(question);
+    });
+
+    connection.on("Answer1Guid", function (question) {
+            $("#answer1Guid").val(question);
+    });
+
+    connection.on("Answer2Guid", function (question) {
+            $("#answer2Guid").val(question);
+    });
+
+    connection.on("Answer3Guid", function (question) {
+            $("#answer3Guid").val(question);
+    });
+
+    connection.start().then(function () {
+
+    }).catch(function (err) {
+        return console.error(err.toString());
+    });
+
+        function selectOption(optionId) {
+            $('.option').removeClass('selected');
+            $('#' + optionId).addClass('selected');
+            answer = $('#' + optionId + "Guid").val();
+            console.log(answer)
+        }
+    $(document).ready(function(){
         debugger;
-         $.ajax({
-            type: "POST",
-            url:  "",
-            data: { userName: localStorage.getItem("quizzotto-user"), answerId : answer} ,
-            headers: {
+        var token = $('input:hidden[name="__RequestVerificationToken"]').val();
+        $("#SendAnswer").click(function(){
+            debugger;
+             $.ajax({
+                type: "POST",
+                url: "",
+                data: {userName: localStorage.getItem("quizzotto-user"), answerId: answer, matchId: localStorage.getItem("quizzotto-matchId")} ,
+                headers: {
                     RequestVerificationToken: token
                 },
-            success: function () {
-                alert('Posted using jQuery')
-            }
-        }
-        )
-       
-    });
-})
-
-
+                success: function () {
+                    alert('Risposta Inviata.')
+                }
+            })
+        });
+    })
 </script>
-

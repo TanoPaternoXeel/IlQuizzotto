@@ -1,29 +1,29 @@
 ﻿@page
 @model IlQuizzotto.Pages.ActiveQuestionModel
 @{
-      ViewData["Title"] = "Quizzotto ";
+    ViewData["Title"] = "Quizzotto";
+    var matchId = Request.Query["matchId"];
 }
 
 <style>
-        .quiz-card {
-            border: none;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-        }
+    .quiz-card {
+        border: none;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
 
-        .option {
-            background-color: #116698BF;
-            border: 2px solid #444;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-            color: #fff;
-        }
+    .option {
+        background-color: #116698BF;
+        border: 2px solid #444;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+        color: #fff;
+    }
 </style>
-
 
 <div class="h-100 w-100 d-flex flex-column align-items-center justify-content-center bg-blue-sfumato pb-4">
     <img src="~/images/quiz8logo.png" alt="Example Image" class="img-fluid" style="height: 150px" />
@@ -41,8 +41,9 @@
     <form method="post" @* class="d-none" *@ id="form">
         <input type="submit" value="Prossima domanda" />
     </form>
-      <div>
-        <a asp-page="End" class="btn btn-light mt-3 fs-2">
+
+    <div>
+        <a asp-page="End" asp-route-matchId="@matchId" class="btn btn-light mt-3 fs-2">
             <i class="fa-solid fa-stop me-2"></i> STOP
         </a>
     </div>
@@ -58,7 +59,6 @@
 
 @section Scripts {
     <script>
-
         // Timer function
         function startTimer(duration, display) {
             var timer = duration, minutes, seconds;

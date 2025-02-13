@@ -2,10 +2,10 @@
 
 namespace IlQuizzotto.Models
 {
-    public class Player
-    {
-        public Guid Id { get; set; }   
+	public class Player
+	{
+		public Guid Id { get; set; }
 		[StringLength(250)]
-        public string NickName { get; set; }
+		public string NickName { get; set; }
 	}
 }

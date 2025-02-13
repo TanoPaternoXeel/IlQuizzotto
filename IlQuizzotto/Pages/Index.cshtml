@@ -2,12 +2,15 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    var matchId = Guid.NewGuid();
+    var userLoginUrl = $"https://{Model.Host}/UserLogin?matchId={matchId}";
+    Console.WriteLine(userLoginUrl);
 }
 
 <div class="h-100 w-100 d-flex flex-column align-items-center justify-content-center bg-blue-sfumato pb-4">
-    <img src="~/images/quiz8logo.png" alt="Example Image" class="img-fluid" style="height: 50%"/>
+    <img src="~/images/quiz8logo.png" alt="Example Image" class="img-fluid" style="height: 50%" />
     <div>
-        <a asp-page="ActiveQuestion" class="btn btn-light btn-lg fs-2">
+        <a asp-page="ActiveQuestion" asp-route-matchId="@matchId" class="btn btn-light btn-lg fs-2">
             <i class="fa-solid fa-play fa-beat me-2"></i> START
         </a>
     </div>
@@ -29,13 +32,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         var qrcode = new QRCode(document.getElementById("qrcode"), {
-            text: "https://9b2c-151-14-38-99.ngrok-free.app/UserLogin",
-                width: 150,
+            text: "@userLoginUrl",
+            width: 150,
             height: 150,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
     </script>
-
 }

@@ -1,6 +1,7 @@
 ﻿@page
 @model IlQuizzotto.Pages.UserLoginModel
 @{
+    var matchId = Request.Query["matchId"];
 }
 
 <div class="h-100 w-100 d-flex flex-column align-items-center justify-content-center bg-blue-sfumato pb-4">
@@ -39,6 +40,7 @@
             $("#loginBtn").on("click", function () {
                 if ($("#loginForm").valid()) {
                     localStorage.setItem("quizzotto-user", $("#nickname").val());
+                    localStorage.setItem("quizzotto-matchId", "@matchId");
                     document.getElementById('myLink').click();
                 }
             });
