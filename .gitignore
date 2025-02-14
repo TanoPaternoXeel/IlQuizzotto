@@ -367,4 +367,5 @@ FodyWeavers.xsd
 
 # Angular
 .angular
-/Alpi.AlpiVision.WebApi/ClientApp/dist/alpi-vision
+
+/IlQuizzotto/obj/*
