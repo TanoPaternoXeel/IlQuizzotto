@@ -9,15 +9,10 @@
 
 <div class="h-100 w-100 d-flex flex-column align-items-center justify-content-center bg-blue-sfumato pb-4">
     <img src="~/images/quiz8logo.png" alt="Example Image" class="img-fluid" style="height: 50%" />
-    <div>
-        <a asp-page="ActiveQuestion" asp-route-matchId="@matchId" class="btn btn-light btn-lg fs-2">
-            <i class="fa-solid fa-play fa-beat me-2"></i> START
-        </a>
-    </div>
     <div class="container mt-3">
         <div class="row align-items-center justify-content-between w-100 mx-5">
-            <h2 class="col-8 text-center">Scansionare il QR Code per partecipare</h2>
-            <div class="col-4 row">
+            <h1 class="col-6 text-center">Scansionare il QR Code per partecipare</h1>
+            <div class="col-6 row">
                 <div class="col-auto">
                     <div class="bg-white p-1 w-auto">
                         <div id="qrcode"></div>
@@ -26,6 +21,11 @@
             </div>
         </div>
     </div>
+    <div style="margin-top:50px;">
+        <a asp-page="ActiveQuestion" asp-route-matchId="@matchId" class="btn btn-light btn-lg fs-2">
+            <i class="fa-solid fa-play fa-beat me-2"></i> START
+        </a>
+    </div>
 </div>
 
 @section Scripts {
@@ -33,8 +33,8 @@
     <script>
         var qrcode = new QRCode(document.getElementById("qrcode"), {
             text: "@userLoginUrl",
-            width: 150,
-            height: 150,
+            width: 300,
+            height: 300,
             colorDark: "#000000",
             colorLight: "#ffffff",
             correctLevel: QRCode.CorrectLevel.H
